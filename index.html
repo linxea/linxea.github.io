@@ -94,6 +94,22 @@
     .credit {
       margin-top: 10px;
       pointer-events: none;
+      animation: blink 2s linear infinite;
+    }
+
+    @keyframes blink {
+      0% {
+        opacity: 0;
+      }
+      40% {
+        opacity: 0;
+      }
+      41% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 1
+      }
     }
 
     .grey-with-red {
@@ -204,7 +220,7 @@
       </a>
     </div>
 
-    <div class="credit grey-with-red">Credit <span class="yellow-with-darkyellow">1</span></div>
+    <div class="credit grey-with-red">Insert Coin<span class="yellow-with-darkyellow">0</span></div>
 
   </section>
 
