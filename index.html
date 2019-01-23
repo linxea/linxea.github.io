@@ -1,229 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <title>linxea.github.io</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1.0 user-scalable=no">
-  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Permanent+Marker" rel="stylesheet">
-  <style>
-    body {
-      color: white;
-      background-color: black;
-      font-family: 'Press Start 2P', monospace;
-      font-size: 1rem;
-      text-align: center;
-      text-transform: uppercase;
-      margin: 0;
-    }
-
-    body:before {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      margin: auto;
-      background: repeating-linear-gradient(#0D122B, #0D122B 2px, #565B73 2px, #565B73 4px);
-      opacity: 0.2;
-      z-index: 100;
-      content: '';
-      pointer-events: none;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    h1 {
-      margin: 0;
-    }
-
-    .splash-screen {
-      width: 100vw;
-      height: 100vh;
-    }
-
-    .title {
-      margin: auto;
-      font-family: 'Permanent Marker', monospace;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
-      height: 40vh;
-      font-size: 2rem;
-      line-height: 0.75;
-      word-break: break-word;
-      max-width: 500px;
-    }
-
-    .title h1 {
-      background: -webkit-linear-gradient(rgb(255, 18, 18) 30%, rgb(255, 215, 38));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .title-top {
-      transform: skew(-10deg) rotate(-10deg) translateX(-2rem);
-      ;
-    }
-
-    .title-bottom {
-      transform: skew(-10deg) rotate(-10deg) translateX(1rem);
-    }
-
-    .buttons {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: 50vh;
-      margin: auto;
-    }
-
-    .buttons a {
-      display: block;
-      margin-bottom: 1rem;
-    }
-
-    .bottom {
-      text-align: center;
-    }
-
-    .credit {
-      margin-top: 10px;
-      pointer-events: none;
-      animation: blink 2s linear infinite;
-    }
-
-    @keyframes blink {
-      0% {
-        opacity: 0;
-      }
-      40% {
-        opacity: 0;
-      }
-      41% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 1
-      }
-    }
-
-    .grey-with-red {
-      color: rgb(192, 192, 192);
-      text-shadow: 2px 2px 0 rgb(192, 11, 11);
-    }
-
-    .purple-with-blue {
-      color: rgb(147, 154, 255);
-      text-shadow: 2px 2px 0 rgb(47, 61, 255);
-    }
-
-    .yellow-with-darkyellow {
-      color: rgb(226, 179, 24);
-      text-shadow: 0 2px 0 rgb(107, 77, 11), 2px 0 0 rgb(151, 109, 19), 2px 2px 0 rgb(151, 109, 19);
-    }
-
-    .yellow {
-      color: rgb(226, 179, 24);
-    }
-
-    .big {
-      font-size: 6rem;
-    }
-
-    @media (min-width: 400px) {
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <meta charset="utf-8" />
+    <meta name="description" content="My dada website" />
+    <meta name="keywords" content="Web, tech, lameness" />
+    <meta name="author" content="linxea" />
+    <title>linxea.github.io</title>
+    <style>
       body {
-        font-size: 1.2rem;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      .big {
-        font-size: 7rem;
+      .cool-countdown {
+        color: white;
+        font-family: Courier, monospace;
+        font-size: 5rem;
       }
-    }
+    </style>
+  </head>
+  <body>
+    <div class="cool-countdown" id="countdown">3</div>
+  </body>
 
-    @media (min-width: 600px) {
-      .big {
-        font-size: 9rem;
+  <script>
+    const countdownElement = document.getElementById("countdown");
+    const START_COUNT = 2;
+    const END_COUNT = 0;
+    const COUNT_DOWN_TIME_IN_SECOND = 1000;
+    let counter = START_COUNT;
+
+    const countDownTimer = setInterval(function() {
+      if (counter === END_COUNT) {
+        clearInterval(countDownTimer);
+        const urls = ["./fighter.html", "./offline.html"];
+        const lengthOfUrls = urls.length;
+        const randomIndex = Math.floor(Math.random() * lengthOfUrls);
+        location.href = urls[randomIndex];
+      } else {
+        countdownElement.innerHTML = counter;
+        counter--;
       }
-
-      .title {
-        font-size: 3rem;
-        height: 50vh;
-      }
-
-      .buttons {
-        height: 40vh;
-      }
-
-      .title-top {
-        transform: skew(-10deg) rotate(-10deg) translateX(-2rem);
-        ;
-      }
-
-      .title-bottom {
-        transform: skew(-10deg) rotate(-10deg) translateX(3rem);
-      }
-    }
-
-    @media (min-width: 800px) {
-      .credit {
-        position: absolute;
-        right: 50px;
-        margin-top: 0;
-      }
-    }
-
-    /* Stole this idea from twilioquest, it's freaking sick. */
-    .load {
-      animation: load 800ms 500ms backwards;
-    }
-
-    @keyframes load {
-      0% {
-        filter: blur(2px) hue-rotate(-150deg);
-      }
-    }
-
-    ::selection {
-      background: #b4fdff;
-    }
-
-    ::-moz-selection {
-      background: #b4fdff;
-    }
-  </style>
-</head>
-
-<body>
-
-  <section class="splash-screen load">
-    <div class="title">
-      <h1 class="title-top"><span class="big">S</span>oftware</h1>
-      <h1 class="title-bottom"><span class="big">E</span>nginee<span class="big">R</span></h1>
-    </div>
-
-    <div class="buttons grey-with-red">
-      <a class="purple-with-blue">Push start button</a>
-      <a>One Player</a>
-      <a>or</a>
-      <a>Player 1 vs Player 2</a>
-    </div>
-
-    <div class="bottom">
-      <a href="mailto:linxea.linxea@gmail.com">
-        <span class="yellow">©</span>
-        <span class="yellow-with-darkyellow">LINXEA 2018</span>
-      </a>
-    </div>
-
-    <div class="credit grey-with-red">Insert Coin <span class="yellow-with-darkyellow">0</span></div>
-
-  </section>
-
-</body>
-
+    }, COUNT_DOWN_TIME_IN_SECOND);
+  </script>
 </html>
