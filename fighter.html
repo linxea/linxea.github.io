@@ -86,7 +86,7 @@
         transform: skew(-10deg) rotate(-10deg) translateX(1rem);
       }
 
-      .buttons {
+      .buttons-wrapper {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -94,9 +94,15 @@
         margin: auto;
       }
 
-      .buttons a {
+      .buttons-wrapper a {
+        position: relative;
         display: block;
         margin-bottom: 1rem;
+        cursor: pointer;
+      }
+
+      .buttons-wrapper a:hover {
+        bottom: -3px;
       }
 
       .bottom {
@@ -165,10 +171,10 @@
 
         .title {
           font-size: 3rem;
-          height: 50vh;
+          height: 45vh;
         }
 
-        .buttons {
+        .buttons-wrapper {
           height: 40vh;
         }
 
@@ -186,6 +192,10 @@
           position: absolute;
           right: 50px;
           margin-top: 0;
+        }
+
+        .buttons-wrapper a {
+          font-size: 1.3em;
         }
       }
 
@@ -219,15 +229,15 @@
         </h1>
       </div>
 
-      <div class="buttons grey-with-red">
-        <a class="purple-with-blue">Push start button</a> <a>One Player</a>
-        <a>or</a> <a>Player 1 vs Player 2</a>
+      <div class="buttons-wrapper grey-with-red">
+        <a class="purple-with-blue" href="./offline">Push start button</a>
+        <a href="./offline">One Player</a>
       </div>
 
       <div class="bottom">
         <a href="mailto:linxea.linxea@gmail.com">
           <span class="yellow">©</span>
-          <span class="yellow-with-darkyellow">LINXEA 2018</span>
+          <span class="yellow-with-darkyellow">@linxea 2020</span>
         </a>
       </div>
 

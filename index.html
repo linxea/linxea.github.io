@@ -1,55 +1,10 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-    />
-    <meta charset="utf-8" />
-    <meta name="description" content="My dada website" />
-    <meta name="keywords" content="Web, tech, lameness" />
-    <meta name="author" content="linxea" />
-    <title>linxea.github.io</title>
-    <style>
-      body {
-        height: 100vh;
-        margin: 0;
-        padding: 0;
-        background-color: black;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .cool-countdown {
-        color: white;
-        font-family: Courier, monospace;
-        font-size: 5rem;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="cool-countdown" id="countdown">3</div>
-  </body>
-
   <script>
-    const countdownElement = document.getElementById("countdown");
-    const START_COUNT = 2;
-    const END_COUNT = 0;
-    const COUNT_DOWN_TIME_IN_SECOND = 1000;
-    let counter = START_COUNT;
-
-    const countDownTimer = setInterval(function() {
-      if (counter === END_COUNT) {
-        clearInterval(countDownTimer);
-        const urls = ["./fighter.html", "./offline.html"];
-        const lengthOfUrls = urls.length;
-        const randomIndex = Math.floor(Math.random() * lengthOfUrls);
-        location.href = urls[randomIndex];
-      } else {
-        countdownElement.innerHTML = counter;
-        counter--;
-      }
-    }, COUNT_DOWN_TIME_IN_SECOND);
+    (() => {
+      const urls = ["./fighter.html", "./offline.html"];
+      const randomIndex = Math.floor(Math.random() * urls.length);
+      location.href = urls[randomIndex];
+    })();
   </script>
 </html>
