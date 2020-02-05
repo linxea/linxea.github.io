@@ -372,7 +372,8 @@
             href="https://github.com/linxea"
             target="_blank"
             rel="noopener noreferrer"
-            >build <b><span id="word">random</span></b> things</a
+            id="repo-link"
+            >build <b><span id="repo-title" href="">cool projects</span></b></a
           >
         </li>
         <li>
@@ -423,12 +424,26 @@
       loopBlinkingInRandomCountDownTime();
 
       const SWITCH_WORD_IN_SECOND = 2000;
-      const wordElement = document.getElementById("word");
-      const words = ["cool", "random", "fun", "interesting", "lame", "weird"];
-      setInterval(function() {
-        randomIndex = Math.floor(Math.random() * words.length);
-        wordElement.innerText = words[randomIndex];
-      }, SWITCH_WORD_IN_SECOND);
+      const repoTitle = document.getElementById("repo-title");
+      const repoLink = document.getElementById("repo-link");
+
+      let repos = [];
+
+      fetch("https://api.github.com/users/linxea/repos")
+        .then(response => {
+          if (response.status === 200) {
+            return response.json();
+          }
+        })
+        .then(response => {
+          repos = response.filter(repo => !repo.fork);
+
+          setInterval(function() {
+            randomIndex = Math.floor(Math.random() * repos.length);
+            repoTitle.innerText = repos[randomIndex].name;
+            repoLink.href = repos[randomIndex].html_url;
+          }, SWITCH_WORD_IN_SECOND);
+        });
     </script>
   </body>
 </html>
